@@ -32,43 +32,29 @@ void listd::NodeList::create_random_list(NodeList list_of_lists,int n)
 
 
 bool listd::NodeList::look_for_node(int n)
-{ 
-	while (true) {
-		
-		int value = 0;
-		std::cout << "What value do you want to look for? ";
-		std::cin >> value;
+{
+	int value = 0;
+	std::cout << "What value do you want to look for? ";
+	std::cin >> value;
 
-		Node* node = new Node(value);
-		int num = sum_numbers(node,n);
+	Node* node = new Node(value);
+	int num = sum_numbers(node, n);
 
-		if (arr[num].head != nullptr) {
-			Node* temp = arr[num].head;
-			while (true) {
-				if (temp->value == node->value) {
-					std::cout << "Such value exists";
-					delete node;
-					return true;
-				}
-				else {
-					if (temp == arr[num].tail) {
-						std::cout << "Such value doesnt exist";
-						delete node;
-						return false;
-
-					}
-					else
-						temp = temp->next;
-				}
+	if (arr[num].head != nullptr) {
+		Node* temp = arr[num].head;
+		while (temp != nullptr) {
+			if (temp->value == node->value) {
+				std::cout << "Such value exists";
+				delete node;
+				return true;
 			}
-
-		}
-		else {
-			std::cout << "Such value doesnt exist";
-			delete node;
-			return false;
+			else temp = temp->next;
 		}
 	}
+	std::cout << "Such value doesnt exist";
+	delete node;
+	return false;
+	
 }
 
 int listd::NodeList::sum_numbers(Node* k,int n)
