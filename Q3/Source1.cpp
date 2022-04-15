@@ -62,9 +62,9 @@ int listd::NodeList::sum_numbers(Node* k,int n)
 	int sum = 0;
 	int temp_value = k->value;
 
-	while (temp_value > n-1) {
-		sum += temp_value % n;
-		temp_value /= n;
+	while (temp_value > 9) {
+		sum += temp_value % 10;
+		temp_value /= 10;
 	}
 	sum += temp_value;
 	return sum%n;
